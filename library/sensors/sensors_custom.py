@@ -99,3 +99,13 @@ class ExampleCustomTextOnlyData(CustomDataSource):
     def last_values(self) -> List[float]:
         # If a custom data class only has text values, it won't be possible to display line graph
         pass
+
+# Imported after CustomDataSource is defined because the module subclasses it.
+from .ion_telemetry import (
+    IonCpuDelta,
+    IonGpuDelta,
+    IonProcessOne,
+    IonProcessTwo,
+    IonProcessThree,
+    IonRamTotal,
+)

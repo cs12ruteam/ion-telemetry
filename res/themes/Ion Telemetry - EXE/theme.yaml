@@ -1,0 +1,160 @@
+author: Ion Telemetry
+display:
+  DISPLAY_SIZE: 3.5"
+  DISPLAY_ORIENTATION: landscape
+  DISPLAY_RGB_LED: 113, 235, 251
+static_images:
+  BACKGROUND:
+    PATH: background.png
+    X: 0
+    Y: 0
+    WIDTH: 480
+    HEIGHT: 320
+STATS:
+  CPU:
+    PERCENTAGE:
+      TEXT:
+        SHOW: true
+        X: 168
+        Y: 9
+        WIDTH: 59
+        HEIGHT: 22
+        FONT: roboto-mono/RobotoMono-Bold.ttf
+        FONT_SIZE: 24
+        FONT_COLOR: 113, 235, 251
+        ANCHOR: mm
+        MIN_SIZE: 0
+        SHOW_UNIT: true
+        BACKGROUND_IMAGE: background.png
+      LINE_GRAPH:
+        SHOW: true
+        X: 38
+        Y: 35
+        WIDTH: 189
+        HEIGHT: 103
+        MIN_VALUE: 0
+        MAX_VALUE: 100
+        HISTORY_SIZE: 45
+        AUTOSCALE: false
+        AXIS: false
+        LINE_COLOR: 113, 235, 251
+        LINE_WIDTH: 1
+        BACKGROUND_IMAGE: background.png
+      INTERVAL: 2
+    TEMPERATURE:
+      TEXT:
+        SHOW: true
+        X: 16
+        Y: 164
+        WIDTH: 46
+        HEIGHT: 32
+        FONT: roboto/Roboto-Black.ttf
+        FONT_SIZE: 26
+        FONT_COLOR: 113, 235, 251
+        ANCHOR: rm
+        MIN_SIZE: 0
+        SHOW_UNIT: false
+        BACKGROUND_IMAGE: background.png
+      LINE_GRAPH:
+        SHOW: true
+        X: 104
+        Y: 151
+        WIDTH: 123
+        HEIGHT: 71
+        MIN_VALUE: 30
+        MAX_VALUE: 90
+        HISTORY_SIZE: 45
+        AUTOSCALE: false
+        AXIS: false
+        LINE_COLOR: 113, 235, 251
+        LINE_WIDTH: 1
+        BACKGROUND_IMAGE: background.png
+      INTERVAL: 2
+  GPU:
+    INTERVAL: 2
+    PERCENTAGE:
+      TEXT:
+        SHOW: true
+        X: 406
+        Y: 9
+        WIDTH: 59
+        HEIGHT: 22
+        FONT: roboto-mono/RobotoMono-Bold.ttf
+        FONT_SIZE: 24
+        FONT_COLOR: 255, 182, 124
+        ANCHOR: mm
+        MIN_SIZE: 0
+        SHOW_UNIT: true
+        BACKGROUND_IMAGE: background.png
+      LINE_GRAPH:
+        SHOW: true
+        X: 276
+        Y: 35
+        WIDTH: 189
+        HEIGHT: 103
+        MIN_VALUE: 0
+        MAX_VALUE: 100
+        HISTORY_SIZE: 45
+        AUTOSCALE: false
+        AXIS: false
+        LINE_COLOR: 255, 182, 124
+        LINE_WIDTH: 1
+        BACKGROUND_IMAGE: background.png
+    TEMPERATURE:
+      TEXT:
+        SHOW: true
+        X: 254
+        Y: 164
+        WIDTH: 46
+        HEIGHT: 32
+        FONT: roboto/Roboto-Black.ttf
+        FONT_SIZE: 26
+        FONT_COLOR: 255, 182, 124
+        ANCHOR: rm
+        MIN_SIZE: 0
+        SHOW_UNIT: false
+        BACKGROUND_IMAGE: background.png
+      LINE_GRAPH:
+        SHOW: true
+        X: 342
+        Y: 151
+        WIDTH: 123
+        HEIGHT: 71
+        MIN_VALUE: 30
+        MAX_VALUE: 90
+        HISTORY_SIZE: 45
+        AUTOSCALE: false
+        AXIS: false
+        LINE_COLOR: 255, 182, 124
+        LINE_WIDTH: 1
+        BACKGROUND_IMAGE: background.png
+  MEMORY:
+    INTERVAL: 2
+    VIRTUAL:
+      LINE_GRAPH:
+        SHOW: true
+        X: 34
+        Y: 260
+        WIDTH: 95
+        HEIGHT: 47
+        MIN_VALUE: 0
+        MAX_VALUE: 100
+        HISTORY_SIZE: 45
+        AUTOSCALE: false
+        AXIS: false
+        LINE_COLOR: 113, 235, 251
+        LINE_WIDTH: 1
+        BACKGROUND_IMAGE: background.png
+      PERCENT_TEXT:
+        SHOW: true
+        X: 41
+        Y: 239
+        WIDTH: 49
+        HEIGHT: 17
+        FONT: roboto/Roboto-Black.ttf
+        FONT_SIZE: 15
+        FONT_COLOR: 113, 235, 251
+        ANCHOR: mm
+        MIN_SIZE: 0
+        SHOW_UNIT: true
+        BACKGROUND_IMAGE: background.png

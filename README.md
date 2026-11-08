@@ -1,3 +1,43 @@
+# Ion Telemetry
+
+A fork of [Turing System Monitor 3.10.0](https://github.com/mathoudebine/turing-smart-screen-python/releases/tag/3.10.0) for the 3.5″ Turing Smart Screen (480×320). It adds the Ion Telemetry theme, a Windows process telemetry module, and a CPU load fallback when the configured sensor returns an invalid reading.
+
+![Ion Telemetry dashboard with sample readings](res/themes/Ion%20Telemetry%20-%20Python/preview.png)
+
+## Windows setup
+
+- **Installer.** Download the Windows x64 setup file from this fork's Releases, install it, and open Configure Ion Telemetry to select your screen model and COM port. If you use LibreHardwareMonitor, launch the monitor as administrator. See the [upstream setup guide](https://github.com/mathoudebine/turing-smart-screen-python/wiki/System-monitor-%3A-how-to-start) for sensor and driver setup.
+- **Standard Turing 3.10.0.** Copy the `Ion Telemetry - EXE` folder from `res/themes` into the theme folder opened by Configure. This variant uses the standard metrics and displays RAM as a percentage.
+- **Run from this fork.** Install Python 3.13 and Git for Windows. Create a virtual environment, install the project's requirements, and run the configurator from the repository root.
+
+```powershell
+py -3.13 -m venv .venv
+& .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+& .\.venv\Scripts\python.exe configure.py
+```
+
+Select **Ion Telemetry - Python**, then click **Save settings**. Run `& .\.venv\Scripts\python.exe main.py` from the same directory. That theme adds used/total RAM in GiB, a ~30-second temperature change, and three process rows. CPU is normalized across all logical processors. Per-process GPU uses the busiest engine Windows reports for each PID. Unavailable values show a dash.
+
+### Optional disk and network counters
+
+The `windows-etw` folder contains a Windows ETW collector for process disk and TCP/UDP rates in MiB/s. It uses the .NET 8 SDK. Start it from an administrator terminal under the same user account as the monitor.
+
+```powershell
+dotnet run --project .\windows-etw\IonDiskNet.csproj -c Release
+```
+
+In `library/sensors/ion_telemetry.py`, `SORT` sets the table order. For a lighter CPU-only table, set `SORT = "CPU"` and `ENABLE_GPU = False`.
+
+### Build the Windows installer
+
+Save your screen and theme settings first. Run `Build-IonTuring.ps1` from Windows PowerShell to build the bundle in `dist-ion/turing-system-monitor`. Open `IonTelemetry.iss` in Inno Setup Compiler and compile it to create the installer in `setup-ion`. For public builds, review `config.yaml` before packaging so it contains no personal configuration or credentials.
+
+## Upstream documentation
+
+The original project documentation follows below.
+
+---
+
 # ![Icon](https://raw.githubusercontent.com/mathoudebine/turing-smart-screen-python/main/res/icons/monitor-icon-17865/24.png) turing-smart-screen-python
 
 > [!WARNING]

@@ -33,6 +33,7 @@ from typing import List
 import babel.dates
 import requests
 from ping3 import ping
+from psutil import Error as PsutilError, cpu_percent
 from psutil._common import bytes2human
 from uptime import uptime
 
@@ -269,6 +270,14 @@ class CPU:
         cpu_percentage = sensors.Cpu.percentage(
             interval=theme_data.get("INTERVAL", None)
         )
+        if not math.isfinite(cpu_percentage):
+            # Use OS CPU times if the configured hardware sensor misses a reading.
+            try:
+                cpu_percentage = cpu_percent(interval=0.1)
+            except (OSError, PsutilError):
+                return
+            if not math.isfinite(cpu_percentage):
+                return
         save_last_value(cpu_percentage, cls.last_values_cpu_percentage,
                         theme_data['LINE_GRAPH'].get("HISTORY_SIZE", DEFAULT_HISTORY_SIZE))
         # logger.debug(f"CPU Percentage: {cpu_percentage}")
